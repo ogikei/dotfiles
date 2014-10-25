@@ -1,0 +1,28 @@
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+export PATH=/usr/local/bin:/usr/local/share/python:/usr/local/share/python3:$PATH
+alias vim=/usr/local/bin/vim
+alias vi=/usr/local/bin/vim
+
+##
+# Your previous /Users/KeisukeOgiwara/.bash_profile file was backed up as /Users/KeisukeOgiwara/.bash_profile.macports-saved_2014-05-04_at_01:22:55
+##
+
+# MacPorts Installer addition on 2014-05-04_at_01:22:55: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# enable color support of ls and also add handy aliases
+alias ls='ls -G'
+alias ll='ls -alFG'
+alias la='ls -AG'
+alias l='ls -CFG'
+GREP_OPTIONS="--color=always";export GREP_OPTIONS
+
+# Add an "alert" alias for long running commands. Use like so:
+# sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
