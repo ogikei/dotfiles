@@ -56,13 +56,6 @@ syntax on
 
 inoremap jj <Esc>
 
-imap <c-e> <END>
-imap <c-a> <HOME>
-imap <c-h> <LEFT>
-imap <c-j> <DOWN>
-imap <c-k> <UP>
-imap <c-l> <Right>
-
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
