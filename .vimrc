@@ -26,6 +26,8 @@ set matchpairs& matchpairs+=<:>
 
 " バックスペースでなんでも消せるようにする
 set backspace=indent,eol,start
+imap ^H <Left><Del>
+imap ^D <Right><Del>
 
 " クリップボードをデフォルトのレジスタとして指定。後にYankRingを使うので
 " 'unnamedplus'が存在しているかどうかで設定を分ける必要がある
@@ -70,12 +72,12 @@ syntax on
 inoremap jj <Esc>
 
 " insertモードのショートカット
-imap <c-e> <END>
-imap <c-a> <HOME>
-imap <c-h> <LEFT>
-imap <c-j> <DOWN>
-imap <c-k> <UP>
-imap <c-l> <Right>
+" imap <c-e> <END>
+" imap <c-a> <HOME>
+" imap <c-h> <LEFT>
+" imap <c-j> <DOWN>
+" imap <c-k> <UP>
+" imap <c-l> <Right>
 
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
@@ -657,4 +659,8 @@ else
 
     " インストールされていないプラグインのチェックおよびダウンロード
     NeoBundleCheck
+endif
+
+if has('gui_macvim')
+    let $PYTHON3_DLL="/usr/local/Cellar/python3/3.4.2_1/Frameworks/Python.framework/Versions/3.4/Python"
 endif
