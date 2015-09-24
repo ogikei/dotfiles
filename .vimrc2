@@ -166,6 +166,14 @@ let g:syntastic_mode_map = { 'mode': 'passive',
     \ 'active_filetypes': ['go'] }
 let g:syntastic_go_checkers = ['go', 'golint']
 
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+
 if has('python')
   let g:jedi#force_py_version = 2
   let g:syntastic_python_python_exec = 'python2'
