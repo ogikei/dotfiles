@@ -12,7 +12,6 @@ set switchbuf=useopen
 set smartcase
 set t_Co=256
 set virtualedit=all
-set encoding=utf-8
 
 set backspace=indent,eol,start
 imap ^H <Left><Del>
@@ -40,8 +39,6 @@ set cursorline
 hi clear CursorLine
 hi CursorLine gui=underline
 syntax on
-
-scriptencoding utf-8
 
 inoremap jj <Esc>
 
@@ -154,8 +151,6 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 
 " tagbar
 NeoBundle 'majutsushi/tagbar'
-
-NeoBundle 'tpope/vim-fugitive'
 
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
@@ -301,6 +296,16 @@ let g:EasyMotion_enter_jump_first = 1
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 nnoremap <Space>o :only<CR>
 
+" lightline.vim
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'component': {
+        \   'readonly': '%{&readonly?"\u2b64":""}',
+    \ },
+    \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+    \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+    \ }
+
 " whitespace
 autocmd BufWritePre * :FixWhitespace
 
@@ -310,81 +315,3 @@ let g:godef_same_file_in_same_window = 1
 
 " color scheme
 colorscheme solarized
-
-" lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'mode_map': {'c': 'NORMAL'},
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'], ['fugitive', 'filename', 'cakephp', 'currenttag', 'anzu'] ]
-      \ },
-      \ 'component': {
-      \   'lineinfo': ' %3l:%-2v',
-      \ },
-      \ 'component_function': {
-      \   'modified': 'MyModified',
-      \   'readonly': 'MyReadonly',
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'fileformat': 'MyFileformat',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \   'anzu': 'anzu#search_status',
-      \   'currenttag': 'MyCurrentTag',
-      \   'cakephp': 'MyCakephp',
-      \ }
-      \ }
-
-
-function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? ' ' : ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head())
-      return ' ' . fugitive#head()
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! MyCurrentTag()
-  return tagbar#currenttag('%s', '')
-endfunction
-
-function! MyCakephp()
-  return exists('*cake#buffer') ? cake#buffer('type') : ''
-endfunction
-
