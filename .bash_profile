@@ -34,15 +34,11 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-# rbenv
-eval "$(rbenv init -)"
-
 # Ant
 ANT_HOME=/usr/local/bin/apache-ant-1.9.6
 PATH=$ANT_HOME/bin:$PATH
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/01013875/google-cloud-sdk/path.bash.inc'
+# MacPorts Installer addition on 2016-11-23_at_18:18:01: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
 
-# The next line enables shell command completion for gcloud.
-source '/Users/01013875/google-cloud-sdk/completion.bash.inc'

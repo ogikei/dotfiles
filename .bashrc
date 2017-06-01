@@ -31,5 +31,3 @@ fi
 stty stop undef
 stty start undef
 
-# rbenv
-export PATH="$HOME/.rbenv/shims:$PATH"
