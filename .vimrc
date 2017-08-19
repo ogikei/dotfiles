@@ -119,9 +119,6 @@ NeoBundleLazy 'Shougo/vimshell', {
     \   'mappings' : ['<Plug>(vimshell_switch)']
     \ }}
 
-" yankround
-NeoBundle 'LeafCage/yankround.vim'
-
 NeoBundleLazy 'Shougo/vimfiler', {
     \ 'depends' : ["Shougo/unite.vim"],
     \ 'autoload' : {
@@ -140,7 +137,8 @@ NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 
 " colorscheme
-NeoBundle 'altercation/vim-colors-solarized'
+" NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'aereal/vim-colors-japanesque'
 
 " go
 NeoBundle 'fatih/vim-go'
@@ -225,9 +223,7 @@ let g:neocomplete#force_omni_input_patterns.python =
 
 " unite
 let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
@@ -236,14 +232,6 @@ nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 " vimshell
 nmap <silent> vs :<C-u>VimShell<CR>
 nmap <silent> vp :<C-u>VimShellPop<CR>
-
-" yankround
-nmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
-let g:yankround_max_history = 100
-nnoremap <Leader><C-p> :<C-u>Unite yankround<CR>
 
 " vimfiler
 let g:vimfiler_as_default_explorer  = 1
@@ -310,7 +298,7 @@ let g:godef_split=2
 let g:godef_same_file_in_same_window = 1
 
 " color scheme
-colorscheme solarized
+colorscheme japanesque
 
 " airline.vim
 let g:airline#extensions#tabline#enabled = 1
