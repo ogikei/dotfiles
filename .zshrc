@@ -14,6 +14,7 @@ alias ls="ls -GF"
 alias gls="gls --color"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+zstyle ':completion:*:default' menu select=1
 
 # Make sure to use double quotes
 zplug "zsh-users/zsh-history-substring-search"
