@@ -11,10 +11,38 @@ autoload -U compinit
 compinit
 
 alias ls="ls -GF"
-alias gls="gls --color"
+alias ll='ls -alFG'
+alias la='ls -AG'
+alias l='ls -CFG'
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*:default' menu select=1
+
+########################################
+# history
+########################################
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt hist_ignore_dups     # 前と重複する行は記録しない
+setopt share_history        # 同時に起動したzshの間でヒストリを共有する
+setopt hist_reduce_blanks   # 余分なスペースを削除してヒストリに保存する
+setopt HIST_IGNORE_SPACE    # 行頭がスペースのコマンドは記録しない
+setopt HIST_IGNORE_ALL_DUPS # 履歴中の重複行をファイル記録前に無くす
+setopt HIST_FIND_NO_DUPS    # 履歴検索中、(連続してなくとも)重複を飛ばす
+setopt HIST_NO_STORE        # histroyコマンドは記録しない
+# http://mollifier.hatenablog.com/entry/20090728/p1
+zshaddhistory() {
+  local line=${1%%$'\n'} #コマンドライン全体から改行を除去したもの
+  local cmd=${line%% *}  # １つ目のコマンド
+  # 以下の条件をすべて満たすものだけをヒストリに追加する
+  [[ ${#line} -ge 5
+    && ${cmd} != (l|l[sal])
+    && ${cmd} != (cd)
+    && ${cmd} != (m|man)
+    && ${cmd} != (r[mr])
+  ]]
+}
 
 # Make sure to use double quotes
 zplug "zsh-users/zsh-history-substring-search"
@@ -40,11 +68,11 @@ function select-history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
 }
-zle -N select-history
-bindkey '^r' select-history
+ zle -N select-history
+ bindkey '^r' select-history
 
 # Supports oh-my-zsh plugins and the like
-zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
 
 zplug "mollifier/cd-gitroot"
 
@@ -83,12 +111,12 @@ zplug "b4b4r07/httpstat", \
 
 # Group dependencies
 # Load "emoji-cli" if "jq" is installed in this example
-zplug "stedolan/jq", \
-    from:gh-r, \
-    as:command, \
-    rename-to:jq
-zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
+#zplug "stedolan/jq", \
+#    from:gh-r, \
+#    as:command, \
+#    rename-to:jq
+#zplug "b4b4r07/emoji-cli", \
+#    on:"stedolan/jq"
 # Note: To specify the order in which packages should be loaded, use the defer
 #       tag described in the next section
 
@@ -181,3 +209,4 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
