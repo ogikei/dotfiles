@@ -1,9 +1,23 @@
+ttyctl -f
 source ~/.zplug/init.zsh
-source ~/zsh-git-prompt/zshrc.sh
+#source ~/zsh-git-prompt/zshrc.sh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export LSCOLORS=exfxcxdxbxegedabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
+PATH=${JAVA_HOME}/bin:${PATH}
+
+# goenv
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+eval "$(pyenv init -)"
 
 bindkey "\e[Z" reverse-menu-complete
 
@@ -43,6 +57,8 @@ zshaddhistory() {
     && ${cmd} != (r[mr])
   ]]
 }
+
+zplug "olivierverdier/zsh-git-prompt"
 
 # Make sure to use double quotes
 zplug "zsh-users/zsh-history-substring-search"
