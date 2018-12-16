@@ -138,7 +138,8 @@ NeoBundle 'vim-airline/vim-airline-themes'
 
 " colorscheme
 " NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'aereal/vim-colors-japanesque'
+" NeoBundle 'aereal/vim-colors-japanesque'
+NeoBundle 'drewtempelmeyer/palenight.vim'
 
 " go
 NeoBundle 'fatih/vim-go'
@@ -298,12 +299,12 @@ let g:godef_split=2
 let g:godef_same_file_in_same_window = 1
 
 " color scheme
-colorscheme japanesque
+" colorscheme japanesque
 
 " airline.vim
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='light'
 let g:airline_powerline_fonts = 1
 " vim-gitgutter
 let g:gitgutter_sign_added = '✚'
