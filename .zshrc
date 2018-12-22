@@ -1,6 +1,7 @@
 ttyctl -f
-source ~/.zplug/init.zsh
-#source ~/zsh-git-prompt/zshrc.sh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export LSCOLORS=exfxcxdxbxegedabagacad
