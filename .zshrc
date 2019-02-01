@@ -237,3 +237,4 @@ fi
 zplug load --verbose
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias brew="env PATH=${PATH/\/Users\/keisukeogiwara\/\.pyenv\/shims:/} brew"
