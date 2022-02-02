@@ -1,5 +1,10 @@
+# path
+export PATH="$PATH:/opt/homebrew/bin/"
+export PATH="/opt/homebrew/Cellar/vim/8.2.4100/bin/:$PATH"
+
 # export
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+export ZPLUG_CACHE_DIR="$HOME/.zplug/cache"
 source $ZPLUG_HOME/init.zsh
 
 # starship
@@ -50,27 +55,27 @@ setopt hist_ignore_all_dups
 
 
 zplug "zsh-users/zsh-autosuggestions"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=250'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=252'
 
 zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug load --verbose
 
 # python
-export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin/:$PATH"
+    fi
 fi
-
-# php
-export PHPENV_ROOT="$HOME/.anyenv/envs/phpenv"
-export PATH="$PHPENV_ROOT/bin:$PATH"
-eval "$(phpenv init -)"
-if command -v phpenv 1>/dev/null 2>&1; then
-  eval "$(phpenv init -)"
-fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # go
 export GOENV_ROOT="$HOME/.goenv"
@@ -80,9 +85,9 @@ eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export GO111MODULE=on
-
+         
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # scala
-export PATH="/usr/local/opt/scala@2.12/bin:$PATH"
+# export PATH="/usr/local/opt/scala@2.12/bin:$PATH"

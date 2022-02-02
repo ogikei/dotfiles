@@ -10,9 +10,9 @@ set shiftround
 set showmatch
 set switchbuf=useopen
 set smartcase
-" set t_Co=256
 set virtualedit=all
 set encoding=utf-8
+set t_Co=256
 
 set backspace=indent,eol,start
 imap ^H <Left><Del>
@@ -40,7 +40,7 @@ set guifont=MyFont\ for\ Powerline
 
 hi clear CursorLine
 hi CursorLine gui=underline
-syntax on
+" syntax on
 
 scriptencoding utf-8
 
@@ -69,12 +69,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ayu-theme/ayu-vim'
 set termguicolors     " enable true colors support
-let ayucolor="light"  " for light version of theme
+let ayucolor = "light"  " for light version of theme
 colorscheme ayu
 
 Plug 'vim-airline/vim-airline'
+
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='ayu'
 
 call plug#end()
-
