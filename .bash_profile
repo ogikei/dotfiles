@@ -21,7 +21,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
-# Ant
 ANT_HOME=/usr/local/bin/apache-ant-1.9.6
 PATH=$ANT_HOME/bin:$PATH
 
