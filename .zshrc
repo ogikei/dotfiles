@@ -143,5 +143,10 @@ if [[ $__INTELLIJ_COMMAND_HISTFILE__ ]]; then
             ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
-alias la='ls -la'
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
